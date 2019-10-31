@@ -16,7 +16,6 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(form: NgForm)  {
-    alert(form.valid)
     let result = this.auth.signUp(form.value.name, form.value.email, form.value.password);
     if(!result) {
       return;
