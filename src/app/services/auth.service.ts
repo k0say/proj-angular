@@ -21,7 +21,9 @@ export class AuthService {
   }
 
   signUp(username: string, email: string, password: string)  {
-    this.isUserLogged = false
+    
+    localStorage.setItem('token', email)
+    return true;
   }
 
   logout()  {

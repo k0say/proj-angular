@@ -1,1 +1,57 @@
-<p>signup works!</p>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>
+            Sign up works!
+        </h1>
+        <form name="signupForm" #f="ngForm" (ngSubmit)="signUp(f)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" required minlength="2" type="name" ngModel #name="ngModel" name="name"
+                    id="name">
+                <div *ngIf="name.dirty && name.invalid && email.touched">
+                    <div class="alert-danger" *ngIf="name?.errors.minlength">
+                        The field name must be at least 2 char
+                    </div>
+                    <div class="alert-danger" *ngIf="name?.errors.required">
+                        The field first name is required
+                    </div>
+                    <div class="alert-danger" *ngIf="name?.errors.name">
+                        The value must be a valid name
+                    </div>
+                </div>
+            </div>
+            <form class="form-group">
+                <label for="email">EMAIL</label>
+                <input class="form-control" required email type="email" ngModel #email="ngModel" name="email"
+                    id="email">
+                <div *ngIf="email.dirty && email.invalid && email.touched">
+                    <div class="alert-danger" *ngIf="email?.errors.required">
+                        The field first name is required
+                    </div>
+                    <div class="alert-danger" *ngIf="email?.errors.email">
+                        The value must be a valid email
+                    </div>
+                </div>
+            </form>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" required minlength="6" type="password" ngModel #password="ngModel"
+                    name="password" id="password">
+                <div *ngIf="password.dirty && password.invalid && password.touched">
+                    <div class="alert-danger" *ngIf="password?.errors.required">
+                        The field password name is required
+                    </div>
+                    <div class="alert-danger" *ngIf="password?.errors.minlength">
+                        The field password must be at least 6 char
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <form name="signupForm" #f="ngForm" (ngSubmit)="signUp(f)">
+            <div class="form-group">
+                <div class="form-group text-center">
+                    <button [disabled]="!f.valid" class="btn btn-primary">Sign Up</button>
+                </div>
+
+            </div>
